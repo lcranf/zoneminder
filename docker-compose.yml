@@ -1,0 +1,13 @@
+version: '3'
+services:
+   zoneminder:
+    build: .
+    ports:
+      - 8080:80
+    volumes:
+      - ./config:/config
+      - ./images:/var/cache/zoneminder/images
+      - ./events:/var/cache/zoneminder/events
+    environment:
+      TZ: America/New_York
+      
