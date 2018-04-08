@@ -15,7 +15,6 @@ else
 
         sleep 3s
 
-        echo "Setting database password to $MY_SQL_ROOT_PASSWORD"
         mysqladmin -u root password $MY_SQL_ROOT_PASSWORD
         mysqladmin -u root -p$MY_SQL_ROOT_PASSWORD reload
         mysqladmin -u root -p$MY_SQL_ROOT_PASSWORD create zm
@@ -24,6 +23,7 @@ else
         echo "SET GLOBAL sql_mode = 'NO_ENGINE_SUBSTITUTION';" | mysql -u root -p$MY_SQL_ROOT_PASSWORD
         
         mysql -u root -p$MY_SQL_ROOT_PASSWORD < /usr/share/zoneminder/db/zm_create.sql
+        mysql -u root -p$MY_SQL_ROOT_PASSWORD < /etc/my_init.d/mysql_defaults.sql
         mysqladmin -uroot -p$MY_SQL_ROOT_PASSWORD reload
 
         chown -R mysql:mysql /var/lib/mysql
