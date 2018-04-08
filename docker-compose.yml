@@ -12,5 +12,6 @@ services:
     #   - ./images:/var/cache/zoneminder/images
     #   - ./events:/var/cache/zoneminder/events
     environment:
+      MY_SQL_ROOT_PASSWORD: zmPassword
       TZ: America/New_York
       
