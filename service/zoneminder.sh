@@ -5,4 +5,4 @@
 
 sleep 7s
  
-exec /sbin/setuser -u root /usr/bin/zmpkg.pl start >>/var/log/zm/zm.log 2>&1
+exec /sbin/setuser root /usr/bin/zmpkg.pl start >>/var/log/zm/zm.log 2>&1

@@ -26,6 +26,11 @@ else
         mysql -u root -p$MY_SQL_ROOT_PASSWORD < /usr/share/zoneminder/db/zm_create.sql
         mysqladmin -uroot -p$MY_SQL_ROOT_PASSWORD reload
 
+        chown -R mysql:mysql /var/lib/mysql
+
+        killall mysqld
+        sleep 5s
+
         date > /etc/mysql.configured
 
  fi
