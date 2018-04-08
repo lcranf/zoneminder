@@ -18,7 +18,7 @@ RUN adduser www-data video && \
     a2enconf zoneminder && \
     chown -R www-data:www-data /usr/share/zoneminder && \
     a2enmod rewrite && \
-    chmod 770 /var/cache/zoneminder etc/zm/zm.conf && \
+    chmod -R 777 etc/zm/zm.conf && \
 	chown root:www-data /etc/zm/zm.conf
 
 RUN mkdir -p /etc/service/zoneminder /var/log/zm ; sync;
@@ -39,7 +39,7 @@ RUN chmod +x /etc/service/mysql/run && \
     chown -R mysql /var/log/mysql
 
 RUN mkdir -p /etc/my_init.d
-COPY ./startup/* /etc/my_init.d/
+COPY ./init/* /etc/my_init.d/
 RUN chmod +x /etc/my_init.d/*.sh
 
 RUN apt-get -y clean && \
