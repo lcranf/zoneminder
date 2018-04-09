@@ -9,10 +9,17 @@ ENV TZ="America/New_York"
 RUN add-apt-repository "deb http://ppa.launchpad.net/iconnor/zoneminder-master/ubuntu $(lsb_release -s -c) main" && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 776FFB04 && \
     apt-get update && \
-    apt-get install -y zoneminder mariadb-server libav-tools && \
+    apt-get install -y zoneminder mariadb-server libav-tools wget && \
     apt-get install -y libvlc-dev libvlccore-dev libapache2-mod-perl2 vlc && \
     apt-get install -y ntp dialog ntpdate ffmpeg php7.0-gd
 
+RUN cd /usr/src \
+    && wget http://www.andywilcock.com/code/cambozola/cambozola-latest.tar.gz \
+    && tar -xzvf /usr/src/cambozola-latest.tar.gz \
+    && mv cambozola-0.936/dist/cambozola.jar /usr/share/zoneminder/www  \
+    && rm /usr/src/cambozola-latest.tar.gz \
+    && rm -R /usr/src/cambozola-0.936
+    
 RUN adduser www-data video && \
     a2enmod cgi && \
     a2enconf zoneminder && \
@@ -20,6 +27,13 @@ RUN adduser www-data video && \
     a2enmod rewrite && \
     chmod -R 777 etc/zm/zm.conf && \
 	chown root:www-data /etc/zm/zm.conf
+
+RUN cd /usr/src \
+    && wget http://www.andywilcock.com/code/cambozola/cambozola-latest.tar.gz \
+    && tar -xzvf /usr/src/cambozola-latest.tar.gz \
+    && mv cambozola-0.936/dist/cambozola.jar /usr/share/zoneminder/www  \
+    && rm /usr/src/cambozola-latest.tar.gz \
+    && rm -R /usr/src/cambozola-0.936
 
 RUN mkdir -p /etc/service/zoneminder /var/log/zm ; sync;
 COPY ./service/zoneminder.sh /etc/service/zoneminder/run
