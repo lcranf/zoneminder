@@ -4,7 +4,7 @@ set -e
 
 if [ -f /etc/mysql.configured ]; then
 
-        echo 'mySQL already configured'
+        echo 'mySQL already configured for zoneminder'
 
 else
 

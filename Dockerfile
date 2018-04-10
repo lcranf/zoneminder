@@ -26,7 +26,8 @@ RUN adduser www-data video && \
     chown -R www-data:www-data /usr/share/zoneminder && \
     a2enmod rewrite && \
     chmod -R 777 etc/zm/zm.conf && \
-	chown root:www-data /etc/zm/zm.conf
+	chown root:www-data /etc/zm/zm.conf && \
+    chown www-data /dev/shm
 
 RUN cd /usr/src \
     && wget http://www.andywilcock.com/code/cambozola/cambozola-latest.tar.gz \
