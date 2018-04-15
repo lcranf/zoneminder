@@ -3,8 +3,6 @@ services:
    zoneminder:
     build:
       context: .
-      args:
-        - ZM_VERSION=1.31.1
     ports:
       - 8080:80
     # volumes:
@@ -14,4 +12,6 @@ services:
     environment:
       MY_SQL_ROOT_PASSWORD: zmPassword
       TZ: America/New_York
-      
+      EMAIL_ADDRESS: pp@gmail.com
+      EMAIL_PASSWORD: zmPassword
+      SMTP_SERVER: "smtp.gmail.com:557"
