@@ -11,7 +11,7 @@ RUN add-apt-repository "deb http://ppa.launchpad.net/iconnor/zoneminder-master/u
     apt-get update && \
     apt-get install -y zoneminder mariadb-server libav-tools wget && \
     apt-get install -y libvlc-dev libvlccore-dev libapache2-mod-perl2 vlc && \
-    apt-get install -y ntp dialog ntpdate ffmpeg php7.0-gd
+    apt-get install -y ssmtp mailutils ntp dialog ntpdate ffmpeg php7.0-gd
 
 RUN cd /usr/src \
     && wget http://www.andywilcock.com/code/cambozola/cambozola-latest.tar.gz \
@@ -57,7 +57,9 @@ RUN mkdir -p /etc/my_init.d
 COPY ./init/* /etc/my_init.d/
 RUN chmod +x /etc/my_init.d/*.sh
 
-RUN apt-get -y clean && \
+RUN rm -R /var/www/html && \
+    rm /etc/apache2/sites-enabled/000-default.conf && \
+    apt-get -y clean && \
 	apt-get -y autoremove && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
