@@ -12,7 +12,7 @@ services:
     environment:
       MY_SQL_ROOT_PASSWORD: zmPassword
       TZ: America/New_York
-      EMAIL_ADDRESS: pp@gmail.com
-      EMAIL_PASSWORD: zmPassword
+      EMAIL_ADDRESS: youremailaddress@gmail.com
+      EMAIL_PASSWORD: <<ENTER email password HERE>>
       SMTP_SERVER: "smtp.gmail.com:587"
       ROOT_SMTP_SERVER: "gmail.com"

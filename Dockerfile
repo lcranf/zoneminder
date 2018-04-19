@@ -9,9 +9,11 @@ ENV TZ="America/New_York"
 RUN add-apt-repository "deb http://ppa.launchpad.net/iconnor/zoneminder-master/ubuntu $(lsb_release -s -c) main" && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 776FFB04 && \
     apt-get update && \
-    apt-get install -y zoneminder mariadb-server libav-tools wget && \
+    apt-get install -y wget && \
+    apt-get install -y  mariadb-server libav-tools && \
     apt-get install -y libvlc-dev libvlccore-dev libapache2-mod-perl2 vlc && \
-    apt-get install -y ssmtp mailutils ntp dialog ntpdate ffmpeg php7.0-gd
+    apt-get install -y cakephp php-curl && \
+    apt-get install -y zoneminder ssmtp mailutils ntp dialog ntpdate ffmpeg php7.0-gd
 
 RUN cd /usr/src \
     && wget http://www.andywilcock.com/code/cambozola/cambozola-latest.tar.gz \
