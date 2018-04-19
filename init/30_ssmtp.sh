@@ -14,3 +14,5 @@ echo "UseTLS=YES" >> /etc/ssmtp/ssmtp.conf
 echo "AuthUser=${EMAIL_ADDRESS}" >> /etc/ssmtp/ssmtp.conf
 echo "AuthPass=${EMAIL_PASSWORD}" >> /etc/ssmtp/ssmtp.conf 
 
+echo "root:${EMAIL_ADDRESS}:${SMTP_SERVER}" >> /etc/ssmtp/revaliases
+echo "www-data:${EMAIL_ADDRESS}:${SMTP_SERVER}" >> /etc/ssmtp/revaliases
