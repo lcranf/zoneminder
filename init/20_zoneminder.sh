@@ -67,3 +67,8 @@ else
 		chmod -R 777 /var/cache/zoneminder/temp
 	fi
 fi
+
+# Fix memory issue
+echo "Setting shared memory to : $SHM_MEM_SIZE of `awk '/MemTotal/ {print $2}' /proc/meminfo` bytes"
+umount /dev/shm
+mount -t tmpfs -o rw,nosuid,nodev,noexec,relatime,size=${SHM_MEM_SIZE} tmpfs /dev/shm

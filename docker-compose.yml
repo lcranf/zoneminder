@@ -9,7 +9,9 @@ services:
     #   - ./config:/config
     #   - ./images:/var/cache/zoneminder/images
     #   - ./events:/var/cache/zoneminder/events
+    privileged: true
     environment:
+      SHM_MEM_SIZE: "50%"
       MY_SQL_ROOT_PASSWORD: zmPassword
       TZ: America/New_York
       EMAIL_ADDRESS: youremailaddress@gmail.com
